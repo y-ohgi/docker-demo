@@ -94,5 +94,12 @@ $ docker run \
 # Tips
 ## 起動したコンテナを停止
 ```
+# 起動中のコンテナを確認
+$ docker ps
+
+# 全てのコンテナを停止
 $ docker stop $(docker ps -aq)
+
+# コンテナの停止を確認
+$ docker ps
 ```
