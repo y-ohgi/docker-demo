@@ -1,0 +1,15 @@
+FROM golang:alpine
+
+WORKDIR /app
+
+COPY ./hello.go ./hello.go
+
+RUN go build -o hello
+
+FROM alpine:latest
+
+WORKDIR /app
+
+COPY --from=0 /app/hello .
+
+CMD ["./hello"]
