@@ -61,6 +61,36 @@ ETag: "5b393c-264"
 Accept-Ranges: bytes
 ```
 
+## 4. Dockerfileからイメージの作成
+GitHubから当該リポジトリをクローン
+```
+$ git clone https://github.com/y-ohgi/docker-demo
+$ cd docker-demo/php
+```
+
+[php/Dockerfile](php/Dockerfile) をもとにDockerイメージをビルド
+```
+$ docker build \
+    -t myphp \
+    .
+```
+
+`-t` : Dockerイメージ名
+`.` : コンテキストとなるディレクトリを指定
+
+## 5. 作成したイメージの実行
+
+```
+$ docker run \
+    -p 9000:9000 \
+    -d \
+    myphp
+```
+
+[localhost:9000/phpinfo.php](http://localhost:9000/phpinfo.php) へアクセスし、PHPが起動できているか確認  
+同時にPDOがインストールされているかも確認する
+
+
 # Tips
 ## 起動したコンテナを停止
 ```
